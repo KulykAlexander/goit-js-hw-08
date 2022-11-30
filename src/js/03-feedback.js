@@ -4,7 +4,10 @@ const emailEl = document.querySelector('[name="email"]');
 const messageEl = document.querySelector('[name="message"]');
 
 const LOCALSTORAGE_KEY = 'feedback-form-state';
-let formData = {};
+const formData = {
+  email: emailEl.value,
+  message: messageEl.value,
+};
 
 formEL.addEventListener('input', throttle(saveForm, 500));
 formEL.addEventListener('submit', onSubmitForm);
@@ -30,7 +33,7 @@ function onSubmitForm(e) {
 function loadForm() {
   const loadData = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
   if (loadData) {
-    emailEl.value = loadData.email;
-    messageEl.value = loadData.message;
+    emailEl.value = loadData.email || 0;
+    messageEl.value = loadData.message || 0;
   }
 }

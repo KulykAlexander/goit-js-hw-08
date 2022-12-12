@@ -4,10 +4,7 @@ const emailEl = document.querySelector('[name="email"]');
 const messageEl = document.querySelector('[name="message"]');
 
 const LOCALSTORAGE_KEY = 'feedback-form-state';
-const formData = {
-  email: emailEl.value || '',
-  message: messageEl.value || '',
-};
+const formData = {};
 
 formEL.addEventListener('input', throttle(saveForm, 500));
 formEL.addEventListener('submit', onSubmitForm);

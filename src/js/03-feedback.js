@@ -13,7 +13,7 @@ formEL.addEventListener('submit', onSubmitForm);
 loadForm();
 
 function saveForm(e) {
-  e.preventDefault();
+  // e.preventDefault();
   formData[e.target.name] = e.target.value;
   localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(formData));
 }

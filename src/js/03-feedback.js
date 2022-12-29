@@ -5,7 +5,7 @@ const messageEl = document.querySelector('[name="message"]');
 
 const LOCALSTORAGE_KEY = 'feedback-form-state';
 
-const formData = {};
+let formData = {};
 
 formEL.addEventListener('input', throttle(saveForm, 500));
 formEL.addEventListener('submit', onSubmitForm);
@@ -13,8 +13,8 @@ formEL.addEventListener('submit', onSubmitForm);
 loadForm();
 
 function saveForm(e) {
-  // e.preventDefault();
-  formData[e.target.name] = e.target.value;
+  let fd = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
+  formData = { ...fd, [e.target.name]: e.target.value };
   localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(formData));
 }
 
